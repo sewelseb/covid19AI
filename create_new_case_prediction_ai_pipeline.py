@@ -51,10 +51,9 @@ model = ensemble.GradientBoostingRegressor(
     n_estimators=1000,
     learning_rate=0.1,
     max_depth=6,
-    min_samples_leaf=9,
+    min_samples_leaf=7,
     max_features=0.1,
-    loss='huber',
-    random_state=0
+    loss='huber'
 )
 
 # create the model based on experiacne
