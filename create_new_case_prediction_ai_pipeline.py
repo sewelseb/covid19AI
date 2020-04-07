@@ -11,7 +11,7 @@ def remove_useless_collumns(data):
     del data['year']
     del data['geoId']
     del data['countryterritoryCode']
-    del data['deaths']
+    # del data['deaths']
     return data
 
 pd.set_option('display.max_colwidth', 100)
@@ -44,7 +44,7 @@ y = data['cases'].to_numpy()
 print(list(features_data.columns))
 
 # split the data between test and train data
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
 # Fit regression model
 model = ensemble.GradientBoostingRegressor(
@@ -68,3 +68,5 @@ print("Training Set Mean Absolute Error: %.4f" % mse)
 # Find the error rate on the test set
 mse = mean_absolute_error(y_test, model.predict(X_test))
 print("Test Set Mean Absolute Error: %.4f" % mse)
+
+print("Score: %.4f" % int(model.score(X_test, y_test)*100))
